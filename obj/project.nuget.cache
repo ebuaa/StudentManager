@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RDnKiUUT7QUzmP9D/c9LLZBfICu/nMOslTXmJqYAnJKDA/ayJrJimD7pyWfmmwmjGTPPCbftw/Ktl6E/6u80gg==",
+  "dgSpecHash": "TpEINcM3Vs1m5aSm6xRkgi4WNwBXP0WXeymUgAJ34kS4jutq8D8cZFKgJw5QsLtyJDxyt1uL3JeyI4cf3bPngw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\aubea\\Desktop\\CESI\\Cours\\winform\\StudentManager\\StudentManager.csproj",
+  "projectFilePath": "C:\\Users\\aubea\\Desktop\\CESI\\Cours\\csharp\\StudentManager\\StudentManager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aubea\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\aubea\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
