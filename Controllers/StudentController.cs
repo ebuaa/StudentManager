@@ -6,6 +6,7 @@ using StudentManager.Models;
 using StudentManager.Models.ViewModels;
 using StudentManager.Controllers;
 using StudentManager.Models.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StudentManager.Controllers
 {
@@ -39,6 +40,43 @@ namespace StudentManager.Controllers
             await dbContext.SaveChangesAsync();
 
             return View();
+        }
+        [HttpGet]
+        public async Task<IActionResult> List()
+        {
+            var students = await dbContext.Students.ToListAsync();
+            return View(students);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var student = await _studentsService.GetStudentsByIdAsync(id);
+            return View(student);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(Students students)
+        {
+            await _studentsService.UpdateStudentsAsync(students);
+            return RedirectToAction(nameof(List));
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var student = await dbContext.Students.FindAsync(id);
+
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            dbContext.Students.Remove(student);
+            await dbContext.SaveChangesAsync();
+
+            return RedirectToAction("List");
         }
         // GET: StudentController
         public ActionResult Index()
@@ -80,7 +118,7 @@ namespace StudentManager.Controllers
         }
 
         // POST: StudentController/Edit/5
-        [HttpPost]
+       /* [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
         {
@@ -92,16 +130,16 @@ namespace StudentManager.Controllers
             {
                 return View();
             }
-        }
+        }*/
 
         // GET: StudentController/Delete/5
-        public ActionResult Delete(int id)
+      /*  public ActionResult Delete(int id)
         {
             return View();
-        }
+        }*/
 
         // POST: StudentController/Delete/5
-        [HttpPost]
+       /* [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
@@ -113,6 +151,6 @@ namespace StudentManager.Controllers
             {
                 return View();
             }
-        }
+        }*/
     }
 }
